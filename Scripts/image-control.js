@@ -119,8 +119,6 @@ function initImageUploaders() {
                         waitingImage ="${waitingImage}"
                         value="${imageData}">`);
 
-        //$.validator.addMethod("fileUploadedSizeRule", function (value, element) { return CheckPhotoSize(element); }, tooBigFileErrorMessage);
-
         $(`#${controlId}_UploadedImage`).on('dragenter', function (e) {
             $(this).css('border', '2px solid blue');
         });
