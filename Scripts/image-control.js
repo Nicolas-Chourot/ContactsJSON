@@ -65,6 +65,7 @@
 let missingFileErrorMessage = "Veuillez sélectionner une image.";
 let tooBigFileErrorMessage = "L'image est trop volumineuse.";
 let wrongFileFormatMessage = "Ce format d'image n'est pas accepté.";
+
 let maxImageSize = 15000000;
 var currentId = 0;
 let initialImageURL = "";
@@ -73,7 +74,7 @@ let waitingImage = "/App_Assets/Loading_icon.gif";
 // Accepted file formats
 let acceptedFileFormat = "image/jpeg,image/jpg,image/gif,image/png,image/bmp,image/webp,image/avif, image/svg";
 
-$(document).ready(() => {
+$(() => {
     /* you can have more than one file uploader */
     initImageUploaders();
 });

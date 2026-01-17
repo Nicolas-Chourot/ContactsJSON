@@ -1,7 +1,9 @@
 ﻿@model ContactsJSON.Models.Contact
 
 <form class="form" action="/Contacts/@ViewBag.Action" method="POST" >
+
     @Html.AntiForgeryToken() <!-- Injection de jeton anti contrefaçon de formulaire -->
+
     <label for="Name">Nom</label>
     <input id="Name"
            name="Name"
@@ -30,13 +32,14 @@
            InvalidMessage="Courriel invalide" />
 
     <label for="Avatar" class="form-label">Avatar </label>
-
     <div class='imageUploader'
          controlId='Avatar'
          imageSrc='@Model.Avatar'
          title="Cliquez/glisser une photo">
     </div>
+
     <input id="submit" type="submit" value="Enregistrer" class="btn btn-primary" style="display:none">
+
 </form>
 
 @section Scripts {
