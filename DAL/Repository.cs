@@ -67,7 +67,7 @@ namespace DAL
         // Lecture du fichier JSON et conservation des données dans la cache dataList
         private void ReadFile()
         {
-            MarkHasChanged();
+
             dataList.Clear();
             try
             {
@@ -88,6 +88,7 @@ namespace DAL
             {
                 using (var sw = new StreamWriter(FilePath))
                     sw.WriteLine(JsonConvert.SerializeObject(dataList));
+                MarkHasChanged();
                 ReadFile();
             }
             catch (Exception e)
@@ -127,6 +128,12 @@ namespace DAL
             {
                 throw e;
             }
+        }
+        private void InitSerialNumber()
+        {
+            MarkHasChanged();
+            string key = this.GetType().Name;
+            HttpContext.Current.Session[key] = _SerialNumber;
         }
         public bool HasChanged
         {
@@ -182,6 +189,7 @@ namespace DAL
                 {
                     using (StreamWriter sw = File.CreateText(FilePath)) { }
                 }
+                InitSerialNumber();
                 ReadFile();
             }
             catch (Exception e)
