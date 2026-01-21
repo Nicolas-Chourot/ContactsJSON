@@ -1,13 +1,14 @@
 ﻿@model ContactsJSON.Models.Contact
 
-<form class="form" action="/Contacts/@ViewBag.Action" method="POST" >
+<form class="form" action="/Contacts/@ViewBag.Action" method="POST">
 
     @Html.AntiForgeryToken() <!-- Injection de jeton anti contrefaçon de formulaire -->
 
     <label for="Name">Nom</label>
-    <input id="Name"
-           name="Name"
+    <input type="text"
            class="form-control Alpha"
+           id="Name"
+           name="Name"
            placeholder="Nom"
            value="@Model.Name"
            required
@@ -16,17 +17,22 @@
            CustomErrorMessage="Ce nom est déjà utilisé" />
 
     <label for="Phone" class="form-label">Téléphone </label>
-    <input class="form-control Phone"
-           name="Phone"
+    <input type="text"
+           class="form-control Phone"
            id="Phone"
+           name="Phone"
            placeholder="(000) 000-0000"
+           value="@Model.Phone" 
            required
            RequireMessage="Veuillez entrer un téléphone"
-           InvalidMessage="Téléphone invalide"
-           value="@Model.Phone" />
+           InvalidMessage="Téléphone invalide" />
 
     <label for="Email" class="form-label">Courriel </label>
-    <input name="Email" class="form-control Email" placeholder="Courriel" value="@Model.Email"
+    <input class="form-control Email" 
+           id="Email" 
+           name="Email" 
+           placeholder="Courriel" 
+           value="@Model.Email"
            required
            RequireMessage="Veuillez entrer un courriel"
            InvalidMessage="Courriel invalide" />
@@ -38,16 +44,10 @@
          title="Cliquez/glisser une photo">
     </div>
 
-    <input id="submit" type="submit" value="Enregistrer" class="btn btn-primary" style="display:none">
+    <input type="submit"
+           class="btn btn-primary"
+           id="submit"  
+           value="Enregistrer"  
+           style="display:none">
 
 </form>
-
-@section Scripts {
-    <script>
-        $(() => {
-            // Nécessaire pour la validation des champs de formulaire
-            initFormValidation();
-            addConflictValidation("/Contacts/CheckNameConflict", 'Name' /* field unicity check */, 'submit' /* form submit button Id */);
-        })
-    </script>
-}
