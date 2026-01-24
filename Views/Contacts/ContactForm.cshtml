@@ -1,14 +1,11 @@
 ﻿@model ContactsJSON.Models.Contact
 
 <form class="form" action="/Contacts/@ViewBag.Action" method="POST">
-
     @Html.AntiForgeryToken() <!-- Injection de jeton anti contrefaçon de formulaire -->
-
     <label for="Name">Nom</label>
-    <input type="text"
-           class="form-control Alpha"
-           id="Name"
+    <input id="Name"
            name="Name"
+           class="form-control Alpha"
            placeholder="Nom"
            value="@Model.Name"
            required
@@ -17,37 +14,27 @@
            CustomErrorMessage="Ce nom est déjà utilisé" />
 
     <label for="Phone" class="form-label">Téléphone </label>
-    <input type="text"
-           class="form-control Phone"
-           id="Phone"
+    <input class="form-control Phone"
            name="Phone"
+           id="Phone"
            placeholder="(000) 000-0000"
-           value="@Model.Phone" 
            required
            RequireMessage="Veuillez entrer un téléphone"
-           InvalidMessage="Téléphone invalide" />
+           InvalidMessage="Téléphone invalide"
+           value="@Model.Phone" />
 
     <label for="Email" class="form-label">Courriel </label>
-    <input class="form-control Email" 
-           id="Email" 
-           name="Email" 
-           placeholder="Courriel" 
-           value="@Model.Email"
+    <input name="Email" class="form-control Email" placeholder="Courriel" value="@Model.Email"
            required
            RequireMessage="Veuillez entrer un courriel"
            InvalidMessage="Courriel invalide" />
 
     <label for="Avatar" class="form-label">Avatar </label>
+
     <div class='imageUploader'
          controlId='Avatar'
          imageSrc='@Model.Avatar'
          title="Cliquez/glisser une photo">
     </div>
-
-    <input type="submit"
-           class="btn btn-primary"
-           id="submit"  
-           value="Enregistrer"  
-           style="display:none">
-
+    <input id="submit" type="submit" value="Enregistrer" class="btn btn-primary" style="display:none">
 </form>

@@ -159,6 +159,5 @@ namespace ContactsJSON.Controllers
             return Json(DB.Contacts.ToList().Where(c => c.Name == Name && c.Id != id).Any(),
                         JsonRequestBehavior.AllowGet /* must have for CORS verification by client browser */);
         }
-
     }
 }
