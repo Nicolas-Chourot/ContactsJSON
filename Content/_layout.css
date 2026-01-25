@@ -30,7 +30,7 @@
         gap: var(--gap);
 
         /* For additionnal section */
-        sideSection {
+        .sideSection {
             display: inline;
             max-width: 20%;
         }
