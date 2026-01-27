@@ -1,6 +1,9 @@
 ﻿@{
+    <!-- Request context : fetch the Controller and its action -->
     string controller = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToLower();
     string action = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString().ToLower();
+
+    <!-- View context variables-->
     bool search = Session["Search"] != null ? (bool)Session["Search"] : false;
     string searchString = Session["SearchString"] != null ? (string)Session["SearchString"] : "";
     int currentContactId = Session["CurrentContactId"] != null ? (int)Session["CurrentContactId"] : 0;
@@ -10,7 +13,7 @@
 <div class="section">
     <div class="headerMenu">
         <a class="siteIcon" href="/contacts/list"></a>
-        <!-- Direct action context command icons -->
+        <!-- Direct action context command icons rendering -->
         @switch (action)
         {
             case "list":
