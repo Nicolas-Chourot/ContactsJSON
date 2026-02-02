@@ -12,16 +12,16 @@
     <script>
         $(() => {
             let contactListPanel = new AutoRefreshedPanel("ContactListPanel", "/Contacts/GetContacts", 5 /* refresh every 5 seconds */);
-            let keywordsOnchangeTimger = null;
+            let keywordsOnchangeTimer = null;
             $("#searchInput").on('keyup', function () {
-                clearTimeout(keywordsOnchangeTimger);
+                clearTimeout(keywordsOnchangeTimer);
                 /* delay request by 0.5 seconds */
-                keywordsOnchangeTimger = setTimeout(() => {
+                keywordsOnchangeTimer = setTimeout(() => {
                     window.location = "/Contacts/SetSearchString?value=" + $("#searchInput").val();
                 }, 500 /* 0.5 seconds */);
             });
             $("#searchInput").on('search', function () { /* click on clear */
-                clearTimeout(keywordsOnchangeTimger);
+                clearTimeout(keywordsOnchangeTimer);
                 window.location = "/Contacts/SetSearchString?value=" + $("#searchInput").val();
             });
         })
